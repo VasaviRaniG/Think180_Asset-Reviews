@@ -1,0 +1,59 @@
+<mvc:View xmlns:table="sap.ui.table" 
+xmlns:core="sap.ui.core" 
+xmlns:form="sap.ui.layout.form"
+    controllerName="T180.fiorichallenge.controller.Main"
+    height="100%"
+    xmlns:l="sap.ui.layout"
+    xmlns:mvc="sap.ui.core.mvc"
+    
+    displayBlock="true"
+    xmlns="sap.m"> 
+   
+     <!-- xmlns:u="sap.ui.unified"-->
+      
+    
+    <Shell id="shell">
+        <App id="app">
+            <pages>
+            <!--To display title page as Asset Revies-->
+                <Page id="page" title="{i18n>Asset Reviews}">
+                 
+                    <content>
+                        <!-- Example text binding from the Asset Review model -->
+                     <Text text="{AssetReviewModel>/CurrentDate}" id="exampleText" class="sapUiSmallMargin"/> 
+
+                       <!--To display how many entries are in the ‘Reviews’ array of the ‘AssetReviewModel -->
+                     <Text text="{AssetReviewModel>/Reviews.length}" id="exampleText1" class="sapUiSmallMargin"/> 
+
+               <!--To display a list or table in the XML view using the Reviews array data from the Asset Review Model -->   
+                 
+	<List headerText="Custom Content" mode="Delete" items="{path: 'AssetReviewModel>/Reviews/0'}" >
+		<CustomListItem>
+			<HBox>
+				<core:Icon size="2rem" src="sap-icon://attachment-photo" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+				<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+					
+					<Label text="{AssetName}"/>
+				</VBox>
+			</HBox>
+		</CustomListItem>
+	</List>
+
+               <!-- <Text text="{AssetReviewModel>/TotalNumberOfReviews}" id="ReviewsCount" class="sapUiSmallMargin"/>-->
+               <ObjectHeader >
+               <attributes>
+            <ObjectAttribute text="Entries: {AssetReviewModel>/TotalNumberOfReviews}" />
+</attributes>                             
+            </ObjectHeader> 
+        
+            
+           
+                    
+                        
+                    </content>
+                </Page>
+               
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>
